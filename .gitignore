@@ -1,0 +1,7 @@
+objs/*
+miniRT
+DontPush/*
+*.o
+*.a
+
+.vscode/*
