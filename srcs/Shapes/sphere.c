@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:51:41 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 21:38:33 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 12:29:41 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shapes.h"
+#include "shapes.h"\
 
 int	is_sphere_hit(const t_ray *r, const t_obj *sphere)
 {
@@ -26,7 +26,18 @@ int	is_sphere_hit(const t_ray *r, const t_obj *sphere)
 	find_delta(&eq);
 	if (eq.delta < 0)
 		return (0);
-	return (1);
+	else 
+	{
+		find_xs(&eq);
+		if (eq.x1 <= eq.x2)
+		{
+			if (eq.x1 >= 0 - __FLT_EPSILON__)
+				return (1);
+		}
+		else if (eq.x2 >= 0 - __FLT_EPSILON__)
+			return (1);
+	}
+	return (0);
 }
 
 void	get_sphere_intersect(t_eqt2 *eq, t_ray *ray, const t_obj *sphere)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_v3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/03/19 01:27:00 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 11:59:02 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ double		v_dotp(const t_v3 *a, const t_v3 *b);
 t_v3		v_v3mult(const t_v3 *a, const t_v3 *b);
 //renvoie la norme de a
 double		v_norm(const t_v3 *a);
-//renvoie l'angle entre le vecter a et b
+//renvoie l'angle entre le vecter a et b en radiant
 double		v_angle(const t_v3 *a, const t_v3 *b);
 //renvoie le vecter a sous forme de couleur en int
 int			v_tocol(const t_v3 *a);

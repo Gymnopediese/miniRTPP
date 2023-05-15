@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/11 11:30:13 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 12:26:38 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ int			cylindre_intersect(t_ray *ray, t_obj *cylindre, t_hit *hit);
 int			plan_intersect(t_ray *ray, t_obj *plan, t_hit *hit);
 void		iterate_objects(t_scene *scene);
 t_v3		*hyperboloid2_intersect(t_ray *ray, t_obj *cylindre, t_v3 *hit);
-int			sphere_intersect(t_ray *r, t_obj *sphere, t_hit *hit);
-t_hit		*sphere_reflection(t_hit *hit, t_v3 *origine);
-// t_v3		sphere_reflection(t_ray *ray, t_obj *sphere, t_v3 *hit);
 
 void		rotation(t_obj *obj, double t[SIZE][SIZE]);
 void		m_inverse(double comatr[4][4], int f);

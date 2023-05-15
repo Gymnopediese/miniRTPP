@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:58:30 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 20:30:45 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:26:33 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ int	inputs(t_scene *scene)
 	if (scene->inputs[KEYCODE_W] && ++f)
 		scene->camera->pos.y -= ADD;
 	if (scene->inputs[KEYCODE_F] && ++f)
-		scene->light->pos.x -= ADD;
+		((t_light*)scene->lights->data)->pos.x -= ADD;
 	if (scene->inputs[KEYCODE_G] && ++f)
-		scene->light->pos.y += ADD;
+		((t_light*)scene->lights->data)->pos.y += ADD;
 	if (scene->inputs[KEYCODE_H] && ++f)
-		scene->light->pos.x += ADD;
+		((t_light*)scene->lights->data)->pos.x += ADD;
 	if (scene->inputs[KEYCODE_T] && ++f)
-		scene->light->pos.y -= ADD;
+		((t_light*)scene->lights->data)->pos.y -= ADD;
 	if (scene->inputs[KEYCODE_4] && ++f)
-		scene->light->pos.z += ADD;
+		((t_light*)scene->lights->data)->pos.z += ADD;
 	if (scene->inputs[KEYCODE_5] && ++f)
-		scene->light->pos.z -= ADD;
+		((t_light*)scene->lights->data)->pos.z -= ADD;
 	if (scene->inputs[KEYCODE_UP_ARROW] && ++f)
 		scene->camera->pos.z += ADD;
 	if (scene->inputs[KEYCODE_DOWN_ARROW] && ++f)
@@ -48,17 +48,17 @@ int	inputs(t_scene *scene)
 void	input_light(int key, t_scene *scene)
 {
 	if (key == KEYCODE_A)
-		scene->light->pos.x -= ADD;
+		((t_light*)scene->lights->data)->pos.x -= ADD;
 	if (key == KEYCODE_S)
-		scene->light->pos.y += ADD;
+		((t_light*)scene->lights->data)->pos.y += ADD;
 	if (key == KEYCODE_D)
-		scene->light->pos.x += ADD;
+		((t_light*)scene->lights->data)->pos.x += ADD;
 	if (key == KEYCODE_W)
-		scene->light->pos.y -= ADD;
+		((t_light*)scene->lights->data)->pos.y -= ADD;
 	if (key == KEYCODE_UP_ARROW)
-		scene->light->pos.z += ADD;
+		((t_light*)scene->lights->data)->pos.z += ADD;
 	if (key == KEYCODE_DOWN_ARROW)
-		scene->light->pos.z -= ADD;
+		((t_light*)scene->lights->data)->pos.z -= ADD;
 }
 
 int	keyup(int key, char *keys)

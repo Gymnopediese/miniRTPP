@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/11 11:57:01 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:35:07 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void		error(char *message);
 void		input(int key, t_scene *scene);
 // void		iterate_objects(t_scene *scene);
 t_v3		v_relative_pos(double height, double width, double x, double y);
-void		ray_trace(t_scene *scene, t_ray *r, t_v3 *l_color,
-				t_v3 *s_color);
-void		brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
+void		brightness(t_v3 *final_color, const t_v3 *object_color,
 				const t_hit *hit, const t_scene *scene);
 
 void		print_vector(t_v3 a, char *name);
@@ -52,9 +50,6 @@ int			keyup(int key, char *keys);
 int			keydown(int key, char *keys);
 
 int			hit_obj(t_scene *scene, t_ray *r, t_hit *hit);
-
-void		brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
-				const t_hit *hit, const t_scene *scene);
 
 void		apply_matrices(t_list *o, t_scene *scene);
 #endif

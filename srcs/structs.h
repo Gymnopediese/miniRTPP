@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/11 11:57:08 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:07:18 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,13 @@ typedef struct s_scene
 	t_window		w;
 	t_ambiance		*ambiance;
 	t_camera		*camera;
-	t_light			*light;
+	t_list			*lights;
 	t_list			*objects;
 	int				input_mode;
 
 	int				(*is_intersections[8])(const t_ray *r, const t_obj *obj);
 	int				(*get_hit_point[8])(const t_ray *r, \
-const t_obj *obj, t_hit *hit);
+	const t_obj *obj, t_hit *hit);
 	int				(*hook)();
 
 	char			inputs[128];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_objs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:06:36 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 20:03:25 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:21:03 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,24 @@ void	init_camera(char **argv, t_scene *scene)
 
 void	init_light(char **argv, t_scene *scene)
 {
-	if (scene->light)
-		error("Too many lights in the file");
-	scene->light = allok(sizeof(*scene->light), 1, 1);
+	t_light *new_light;
+
+	
+	new_light = allok(sizeof(*new_light), 1, 1);
+	ft_lstadd_front(&scene->lights, ft_lstnew(new_light));
 	if (ft_strtablen(argv) != ARGS_LIGHT)
 		error("Wrong arguments number for the light");
-	scene->light->pos = ft_atovedo(argv[1], 0, 0);
-	scene->light->ratio = ft_atodor(argv[2], 0, 1);
-	scene->light->color = ft_atovei(argv[3], 0, 255);
-	v_cnmult(&scene->light->color, scene->light->ratio / 255.0);
+	new_light->pos = ft_atovedo(argv[1], 0, 0);
+	new_light->color = ft_atovei(argv[3], 0, 255);
+	new_light->ratio = ft_atodor(argv[2], 0, 1);
+	v_cnmult(&new_light->color, new_light->ratio / 255.0);
 }
 
 void	init_ambiance(char **argv, t_scene *scene)
 {
 	if (scene->ambiance)
 		error("Too many ambiance in the file");
-	scene->ambiance = allok(sizeof(*scene->light), 1, 1);
+	scene->ambiance = allok(sizeof(*scene->ambiance), 1, 1);
 	if (ft_strtablen(argv) != ARGS_AMBIANCE)
 		error("Wrong arguments number for the ambiance");
 	scene->ambiance->ratio = ft_atodor(argv[1], 0, 1);

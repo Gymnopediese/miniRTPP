@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:52:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 22:11:35 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:24:06 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,19 @@ void	print_object(t_obj *a)
 	print_vector(a->color, "color:\t\t");
 }
 
-void	print_scene(t_scene *i)
+void	print_scene(t_scene *scene)
 {
 	t_list	*l;
 
-	l = i->objects;
-	print_ambiance(i->ambiance);
-	print_camera(i->camera);
-	print_light(i->light);
+	print_ambiance(scene->ambiance);
+	print_camera(scene->camera);
+	l = scene->lights;
+	while(l)
+	{
+		print_light(l->data);
+		l = l->next;
+	}
+	l = scene->objects;
 	while (l)
 	{
 		print_object((t_obj *)l->data);

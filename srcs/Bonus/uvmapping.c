@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   uvmapping.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 08:55:28 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 16:48:21 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:11:56 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ int	uvmapping(t_obj *obj, t_v3 *hit, t_scene *scene)
 {
 	t_v3	uv;
 	t_v3	pos;
-	int		i;
 
+	(void) scene; // TODO enlever
 	pos = v_rm(hit, &obj->pos);
 	uv.x = 0.5 + (atan2f(pos.z, pos.x) / (2 * PI));
 	uv.y = 0.5 + (asinf(pos.y) / (PI));
 	uv.y -= (int)uv.y;
 	uv.x -= (int)uv.x;
 	//print_vector(uv, "uv:	");
-	i = 1 - (v_dist(hit, &scene->light->pos)
-			/ v_dist(&obj->pos, &scene->light->pos));
+	// i = 1 - (v_dist(hit, &scene->light->pos)
+	// 		/ v_dist(&obj->pos, &scene->light->pos));
 	//print_vector(uv, "uvpos");
 	return (0);
 	//return (get_pix(&scene->texture, uv.x, uv.y));

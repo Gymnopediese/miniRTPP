@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:21:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 21:53:26 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/15 15:10:01 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	parse_rt_file(t_scene *scene, char *file_name)
 	i = -1;
 	scene->ambiance = 0;
 	scene->camera = 0;
-	scene->light = 0;
+	scene->lights = 0;
 	scene->objects = 0;
 	while (lines[++i] && comment(lines[i]))
 	{
