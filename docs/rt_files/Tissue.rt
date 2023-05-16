@@ -1,0 +1,5 @@
+pl  0,0,2    1,1,0 233,233,233 -t docs/bump_maps/tissue_t.xpm -s 10,10,10 -b docs/bump_maps/tissue.xpm 
+
+A 0.2       255,255,255
+C 0,0,0 0,0,0 70
+L 0,0,0 1     255,255,255
