@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:11:47 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:42:33 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:48:56 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	compute_reflexion(t_v3 *result, const t_v3 *light_origine, t_v3 *normal)
 	v_crm(result, &projection);
 }
 
-void	brightness(t_v3 *final_color, const t_v3 *object_color,
+void	brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
 	const t_hit *hit, const t_scene *scene)
 {
 	t_list	*current_link;
@@ -62,4 +62,18 @@ void	brightness(t_v3 *final_color, const t_v3 *object_color,
 		//t_v3 angle = v_angle(&reflexion, &hit->ray.origin);
 		current_link = current_link->next;
 	}
+}
+
+long int	ft_get_color(const t_canvas *cvs, int x, int y) // TODO utilise ?
+{
+	unsigned char		*pix;
+	unsigned long int	col;
+
+	pix = (unsigned char *)ft_get_pixel(cvs, x, y);
+	col = 0;
+	col = (col << 8) + (((int)pix[3]));
+	col = (col << 8) + (((int)pix[2]));
+	col = (col << 8) + (((int)pix[1]));
+	col = (col << 8) + (((int)pix[0]));
+	return (col);
 }

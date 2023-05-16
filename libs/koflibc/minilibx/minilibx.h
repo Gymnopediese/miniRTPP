@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minilibx.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42lausanne.ch>      +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:30:13 by albaud            #+#    #+#             */
-/*   Updated: 2022/11/23 14:48:45 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/12 10:34:47 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		ft_draw_line(t_canvas *cvs, t_vector a, t_vector b, int color);
 void		ft_draw_square(t_canvas *cvs, t_vector pos, int size, int color);
 void		ft_draw_fsquare(t_canvas *cvs, t_vector pos, int size, int color);
 void		ft_put_pixel(t_canvas *cvs, int x, int y, int color);
-char		*ft_get_pixel(t_canvas *cvs, int x, int y);
+char		*ft_get_pixel(const t_canvas *cvs, int x, int y);
 void		ft_clone_pixel(t_canvas *cvs, int x, int y, char *pixel);
 t_canvas	ft_rotate_h(void *mlx, t_canvas cvs, int angle);
 t_canvas	ft_rotate_right(void *mlx, t_canvas cvs, int angle);

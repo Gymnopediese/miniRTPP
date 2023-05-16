@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:08:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/15 12:22:16 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:54:59 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ double	find_big_value(t_v3 **buffer, int width, int height)
 	int		x;
 	int		y;
 	double	max_value;
-	
+
 	(void) width;
 	y = -1;
-	max_value = 0.1; // Pour eviter de diviser par 0 ou de trop augmenter la luminosité
+	max_value = 0.000001;
 	while (++y < height)
 	{
 		x = -1;

@@ -6,13 +6,13 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 02:03:08 by albaud            #+#    #+#             */
-/*   Updated: 2022/12/11 23:23:10 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/12 10:34:30 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../sources.h"
 
-char	*ft_get_pixel(t_canvas *cvs, int x, int y)
+char	*ft_get_pixel(const t_canvas *cvs, int x, int y)
 {
 	return (&cvs->cvs[(int)((y * cvs->line_bytes) + (x * 4))]);
 }

@@ -6,7 +6,7 @@
 #    By: albaud <albaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 14:57:19 by albaud            #+#    #+#              #
-#    Updated: 2023/05/11 12:00:28 by albaud           ###   ########.fr        #
+#    Updated: 2023/05/12 10:43:18 by albaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ $(NAME)	: ${OBJS}
 		make -C libs/koflibc
 		make -C libs/vector3d
 		make -C libs/minilibx_macos
-		echo ${OBJS}
 		${CC} ${CFLAGS} ${LIBS} ${FRAMEWORK} -o ${NAME} ${OBJS} ${LIB}
 
 c		:

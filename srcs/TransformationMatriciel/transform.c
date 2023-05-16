@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 23:06:00 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 22:14:54 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 11:17:12 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ void	_tranpose(t_obj *obj, double t[SIZE][SIZE])
 	m_mult(obj->transform, t);
 }
 
+void	anim(t_obj *obj)
+{
+	obj->orientation = (t_v3){
+		obj->orientation.x + obj->rotation.x,
+		obj->orientation.y + obj->rotation.y,
+		obj->orientation.z + obj->rotation.z
+	};
+	if (obj->orientation.x < -PI)
+		obj->orientation.x = PI;
+	if (obj->orientation.y < -PI)
+		obj->orientation.y = PI;
+	if (obj->orientation.z < -PI)
+		obj->orientation.z = PI;
+	if (obj->orientation.x > PI)
+		obj->orientation.x = -PI;
+	if (obj->orientation.y > PI)
+		obj->orientation.y = -PI;
+	if (obj->orientation.z > PI)
+		obj->orientation.z = -PI;
+	v_cadd(&obj->scale, &obj->scale_anim);
+	if (++obj->scale_index > obj->scale_period)
+	{
+		obj->scale_index = 0;
+		v_cnmult(&obj->scale_anim, -1);
+	}
+}
+
 void	m_transform(t_obj *obj, t_scene *scene)
 {
 	double	t[SIZE][SIZE];
@@ -60,4 +87,5 @@ void	m_transform(t_obj *obj, t_scene *scene)
 		m_inverse(obj->inverse_transform, 4);
 	m_print(obj->transform, "NOR");
 	m_print(obj->inverse_transform, "INV");
+	anim(obj);
 }

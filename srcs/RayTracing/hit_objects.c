@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:19:16 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/15 12:27:50 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:49:19 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int	hit_any_obj(const t_scene *scene, t_ray *r)
 	while (objects)
 	{
 		obj = objects->data;
-		if (scene->is_intersections[obj->id - SHAPE_START](r, obj))
-			return (1);
+		(void) r;
+		// if (scene->is_intersections[obj->id - SHAPE_START](r, obj))
+		// 	return (1);
 		objects = objects->next;
 	}
 	return (0);
@@ -53,12 +54,12 @@ int	hit_obj(t_scene *scene, t_ray *r, t_hit *hit)
 	while (objects)
 	{
 		obj = objects->data;
-		if (scene->get_hit_point[obj->id - SHAPE_START](r, obj, hit))
+		if (get_point(r, obj, hit, 0))
 			min = is_nearer(min, r, hit, &cobj);
 		objects = objects->next;
 	}
 	if (min == MAXFLOAT)
 		return (0);
-	scene->get_hit_point[cobj->id - 3](r, cobj, hit);
+	get_point(r, cobj, hit, 1);
 	return (1);
 }
