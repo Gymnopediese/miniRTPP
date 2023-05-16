@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:22:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:51:57 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:57:04 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,25 @@ int	ray_trace_basic(t_scene *scene, t_ray *r)
 	return (-1);
 }
 
-// TODO Ajouter la ++
+int	ray_trace_phong(t_scene *scene, t_ray *r)
+{
+	t_hit		hit;
+	t_v3		ambiance_color;
+	t_v3		col;
+
+	hit.obj = 0;
+	if (hit_obj(scene, r, &hit))
+	{
+		col = (t_v3){0, 0, 0};
+		brightness(&col, &hit, scene);
+		ambiance_color = v_mult(&scene->ambiance->color, &hit.color);
+		v_cadd(&col, &ambiance_color);
+		v_cnmult(&col, 255);
+		int tmp = v_tocol(&col);
+		if (tmp != 0) // TODO pour test, enlever
+			return (tmp);
+		else
+			return tmp;
+	}
+	return (-1);
+}

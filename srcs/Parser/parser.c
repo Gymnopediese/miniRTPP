@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:21:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:47:40 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:37:30 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,10 @@ void	parse_rt_file(t_scene *scene, char *file_name)
 		if (lines[i][0])
 			ligne_to_obj(lines[i], scene);
 	}
+	if (!scene->camera)
+		error("Rt file invalide : no camera");
+	if (!scene->ambiance)
+		error("Rt file invalide : no ambiant light");
+	if (!scene->lights)
+		error("Rt file invalide : no light");
 }

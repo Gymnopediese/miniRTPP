@@ -6,24 +6,24 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:19:16 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:49:19 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:02:13 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	hit_any_obj(const t_scene *scene, t_ray *r)
+int	hit_any_obj(const t_scene *scene, t_ray *r, double	d)
 {
 	t_list	*objects;
-	t_obj	*obj;
-
+	t_hit	hit;
+ 
 	objects = scene->objects;
 	while (objects)
 	{
-		obj = objects->data;
-		(void) r;
-		// if (scene->is_intersections[obj->id - SHAPE_START](r, obj))
-		// 	return (1);
+		if (get_point(r, objects->data, &hit, 0) && v_dist(&r->origin, &hit.ray.origin) < d)
+		{
+			return (1);
+		}
 		objects = objects->next;
 	}
 	return (0);

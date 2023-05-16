@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:11:47 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:48:56 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:03:20 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	compute_reflexion(t_v3 *result, const t_v3 *light_origine, t_v3 *normal)
 	v_crm(result, &projection);
 }
 
-void	brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
-	const t_hit *hit, const t_scene *scene)
+void	brightness(t_v3 *final_color, const t_hit *hit, const t_scene *scene)
 {
 	t_list	*current_link;
 	t_light	*current_light;
@@ -37,7 +36,6 @@ void	brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
 	t_ray	r;
 
 	current_link = scene->lights;
-	
 	while(current_link)
 	{
 		current_light = current_link->data;
@@ -45,21 +43,30 @@ void	brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
 			continue;
 		r.direction = v_rm(&current_light->pos, &hit->ray.origin);
 		r.origin = hit->ray.origin;
-		if (hit_any_obj(scene, &r))
+		t_v3 test = v_nmult(&hit->normal, 0.01);
+		v_cadd(&r.origin, &test);
+		if (hit_any_obj(scene, &r, v_dist(&current_light->pos, &hit->ray.origin)))
 		{
 			current_link = current_link->next;
 			continue;
 		}
-		tmp_color = *object_color;
+		tmp_color = hit->color;
 		v_cmult(&tmp_color, &current_light->color);
-		t_v3 v1 = v_unit(&r.direction); // TODO Faire propre
+		t_v3 v1 = v_rm(&current_light->pos, &hit->ray.origin); // TODO Faire propre
+		v_cunit(&v1);
 		t_v3 v2 = v_unit(&hit->normal);
-		double tmp = v_angle(&v1, &v2);
-		v_cnmult(&tmp_color, cos(tmp));
+		//double tmp = v_angle(&v1, &v2);
+		if (v_dotp(&v1, &v2) < 0) // TODO opti
+		{
+			current_link = current_link->next;
+			continue;
+		}
+		v_cnmult(&tmp_color, v_dotp(&v1, &v2));
 		v_cadd(final_color, &tmp_color);
-		//t_v3 reflexion;
-		//compute_reflexion(&reflexion, &current_light->pos, &v2);
-		//t_v3 angle = v_angle(&reflexion, &hit->ray.origin);
+		t_v3 reflexion;
+		compute_reflexion(&reflexion, &current_light->pos, &v2);
+		//double ref_intensity = v_dotp(&reflexion, &hit->ray.origin);
+		//tmp_color = v_mult(current_light->color, );
 		current_link = current_link->next;
 	}
 }

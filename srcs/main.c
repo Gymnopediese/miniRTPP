@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:43:32 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:31:40 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 14:54:21 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	simple(t_scene *scene)
 		apply_matrices(scene->objects, scene);
 		update_screen(scene);
 	}
-	else if (inputs(scene))
+	if (inputs(scene))
 		update_screen(scene);
 	return (0);
 }

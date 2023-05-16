@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:55:09 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 08:49:52 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:01:15 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	get_solution(const t_ray *local,
 	i = -1;
 	while (++i < 6)
 	{
-		if (sols[i] <= 0 || sols[i] > min || sols[i] != sols[i])
+		if (sols[i] < 0 || sols[i] > min || sols[i] != sols[i])
 			continue ;
 		hit->ray.origin = v_ponline(&local->origin, &local->direction, sols[i]);
 		if (obj->funcs->condition(hit))
@@ -46,7 +46,9 @@ int	get_point(const t_ray *ray, const t_obj *obj, t_hit *hit, int full)
 
 	if (obj->id == OBJECT)
 		return (get_obj_point(ray, obj, hit, full));
-	ft_bzero(sols, 8 * 6);
+	ind = -1;
+	while (++ind < 6)
+		sols[(int)ind] = -1;
 	global_to_local(ray, &local, obj);
 	obj->funcs->function(&local, sols);
 	ind = get_solution(&local, obj, hit, sols);
@@ -55,7 +57,7 @@ int	get_point(const t_ray *ray, const t_obj *obj, t_hit *hit, int full)
 	if (full && get_color(obj, hit, ind))
 	{
 		obj->funcs->normal(hit, ind);
-		local_to_global(&hit->normal, obj);
+		// local_to_global(&hit->normal, obj);
 	}
 	local_to_global(&hit->ray.origin, obj);
 	hit->obj = obj;

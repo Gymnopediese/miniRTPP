@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:51:41 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:52:51 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:10:36 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sphere_function(t_ray *ray, double *sols)
 	find_delta(&eq);
 	if (eq.delta < 0)
 		return ;
-	sols[0] = (-eq.b + sqrt(eq.delta)) / (2.0 * eq.a);
+	sols[0] = (-eq.b + sqrt(eq.delta)) / (2.0 * eq.a); // TODO stocker la racine et le diviseur pour opti
 	sols[1] = (-eq.b - sqrt(eq.delta)) / (2.0 * eq.a);
 }
 

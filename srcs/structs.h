@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:53:39 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:51:35 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_obj
 	t_funcs		*funcs;
 	double		transform[4][4];
 	double		inverse_transform[4][4];
+	double		normalizer[4][4];
 }	t_obj;
 
 typedef struct s_hit
@@ -166,6 +167,7 @@ typedef struct s_scene
 	t_list			*objects;
 	int				input_mode;
 	int				animation;
+	int				camera_mode;
 	int				(*hook)();
 	t_funcs			obj_funcs[12];
 	char			inputs[128];

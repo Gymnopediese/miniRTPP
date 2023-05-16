@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:47:06 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:02:31 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@
 # include <pthread.h>
 # include <signal.h>
 
-int			hit_any_obj(const t_scene *scene, t_ray *r);
+int			hit_any_obj(const t_scene *scene, t_ray *r, double	d);
 int			inputs(t_scene *scene);
 void		*iterate_thread(void *p);
 void		init_threads(t_scene *scene, int amount);
 int			ray_trace_basic(t_scene *scene, t_ray *r);
+int			ray_trace_phong(t_scene *scene, t_ray *r);
 void		print_scene(t_scene *i);
 void		parse_rt_file(t_scene *scene, char *file_name);
 void		error(char *message);
 void		input(int key, t_scene *scene);
 // void		iterate_objects(t_scene *scene);
 t_v3		v_relative_pos(double height, double width, double x, double y);
-void		brightness(t_v3 *final_color, const t_v3 *object_color,
-				const t_hit *hit, const t_scene *scene);
+void		brightness(t_v3 *final_color, const t_hit *hit, const t_scene *scene);
 
 void		print_vector(t_v3 a, char *name);
 // int			damier(t_obj *obj, t_v3 *hit, t_scene *scene);

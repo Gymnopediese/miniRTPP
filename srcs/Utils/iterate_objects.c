@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 19:08:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:54:59 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:13:38 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	iterate_objects(t_scene *scene)
 		{
 			r.origin = scene->camera->pos;
 			r.direction = v_relative_pos(scene->w.cvs.x, scene->w.cvs.y, x, y);
-			color = ray_trace_basic(scene, &r);
+			color = ray_trace_phong(scene, &r);
 			if (-1 != color)
 				ft_put_pixel(&scene->w.cvs, x, y, color);
 		}
@@ -61,7 +61,7 @@ void	progressive_iteration(t_scene *scene, t_v3 **buffer, int steps)
 					(scene->w.cvs.x, scene->w.cvs.y, x, y);
 				s_color = (t_v3){1.0, 1.0, 1.0};
 				l_color = (t_v3){0.0, 0.0, 0.0};
-				ray_trace_basic(scene, &r);
+				ray_trace_phong(scene, &r);
 				buffer[y][x] = l_color;
 				if (l_color.x + l_color.y + l_color.z != 0) // Point d'accroche pour les tests. A enlever
 					continue ;

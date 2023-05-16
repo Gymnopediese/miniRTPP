@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:58:30 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:54:53 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:54:07 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	inputs2(t_scene *scene)
 	// 	scene->lights->data->pos.z += ADD;
 	// if (scene->inputs[KEYCODE_5] && ++f)
 	// 	scene->lights->data->pos.z -= ADD;
+	if (scene->inputs[KEYCODE_K] && ++f)
+		scene->camera_mode = (scene->camera_mode + 1) % 2;
 	if (scene->inputs[KEYCODE_UP_ARROW] && ++f)
 		scene->camera->pos.z += ADD;
 	if (scene->inputs[KEYCODE_DOWN_ARROW] && ++f)
