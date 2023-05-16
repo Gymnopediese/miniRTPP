@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 20:03:38 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 10:18:31 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ void		init_hyperboloid(char **argv, t_obj *obj);
 void		init_hyperboloid2(char **argv, t_obj *obj);
 void		init_paraboloid(char **argv, t_obj *obj);
 void		init_paraboloid2(char **argv, t_obj *obj);
-
-void		valid_file(char *filename);
+void		init_torus(char **argv, t_obj *obj);
+void		init_object(char **argv, t_obj *obj);
+int			valid_file(char *filename);
 t_v3		ft_atovedo(char *str, double min, double max);
 t_v3		ft_atovei(char *str, int min, int max);
 double		ft_atodor(const char *str, double min, double max);

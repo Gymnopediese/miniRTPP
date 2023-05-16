@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:52:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 22:11:35 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/12 07:37:30 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	print_object(t_obj *a)
 {
 	printf("printing object id %i\n", a->id);
 	print_vector(a->pos, "position\t");
-	printf("diametre:\t%f\n", a->diametre);
-	printf("hauteur:\t%f\n", a->hauteur);
 	print_vector(a->scale, "scale\t\t");
 	print_vector(a->orientation, "orientation\t");
 	print_vector(a->color, "color:\t\t");

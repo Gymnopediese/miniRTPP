@@ -6,36 +6,25 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:21:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 21:53:26 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 11:10:36 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
+
 enum e_id	get_id(char *line)
 {
-	if (ft_strcmp(line, "A") == 0)
-		return (AMBIANCE);
-	else if (ft_strcmp(line, "L") == 0)
-		return (LUMIERE);
-	else if (ft_strcmp(line, "C") == 0)
-		return (CAMERA);
-	else if (ft_strcmp(line, "sp") == 0)
-		return (SPHERE);
-	else if (ft_strcmp(line, "pl") == 0)
-		return (PLAN);
-	else if (ft_strcmp(line, "cy") == 0)
-		return (CYLINDRE);
-	else if (ft_strcmp(line, "cn") == 0)
-		return (CONE);
-	else if (ft_strcmp(line, "hb") == 0)
-		return (HYPERBOILD);
-	else if (ft_strcmp(line, "hb2") == 0)
-		return (HYPERBOILD2);
-	else if (ft_strcmp(line, "pb") == 0)
-		return (PARABOLOID);
-	else if (ft_strcmp(line, "pb2") == 0)
-		return (PARABOLOID2);
+	const char	*p[] = {
+		"A", "C", "L", "sp", "pl", "cy", "hb", "cn",
+		"hb2", "pb", "pb2", "to", "cb", "cp", "obj", 0
+	};
+	int			i;
+
+	i = -1;
+	while (p[++i])
+		if (ft_strcmp(line, (char *)p[i]) == 0)
+			return (i);
 	error("invalid object type in .rt file");
 	return (0);
 }
@@ -46,22 +35,27 @@ void	ligne_to_shape(char **argv, t_scene *scene, enum e_id id)
 
 	obj = allok(sizeof(*obj), 1, 1);
 	obj->scale = (t_v3){1, 1, 1};
+	obj->rotation = (t_v3){0, 0, 0};
+	obj->damier = (t_v3){10, 10, 0};
+	obj->scale_anim = (t_v3){0, 0, 0};
+	obj->scale_period = 5;
+	obj->id = id;
 	if (id == SPHERE)
 		init_sphere(argv, obj);
-	else if (id == PLAN)
+	else if (id == PLAN || id == CUBE)
 		init_plan(argv, obj);
-	else if (id == CYLINDRE)
+	else if (id == CYLINDRE || id == CONE || id == HYPERBOILD
+		|| id == HYPERBOILD2 || id == PARABOLOID || id == PARABOLOID2
+		|| id == CAPSULE)
 		init_cylindre(argv, obj);
-	else if (id == CONE)
-		init_cone(argv, obj);
-	else if (id == HYPERBOILD)
-		init_hyperboloid(argv, obj);
-	else if (id == HYPERBOILD2)
-		init_hyperboloid2(argv, obj);
-	else if (id == PARABOLOID)
-		init_paraboloid(argv, obj);
-	else if (id == PARABOLOID2)
-		init_paraboloid2(argv, obj);
+	else if (id == TORUS)
+		init_torus(argv, obj);
+	else if (id == OBJECT)
+		init_object(argv, obj);
+	v_cndiv(&obj->color, 255.0);
+	v_cndiv(&obj->color2, 255.0);
+	v_cnmult(&obj->orientation, PI);
+	obj->funcs = &scene->obj_funcs[id - 3];
 	ft_lstadd_back(&scene->objects, ft_lstnew(obj));
 }
 
@@ -103,7 +97,7 @@ void	parse_rt_file(t_scene *scene, char *file_name)
 	char	**lines;
 	int		i;
 
-	valid_file(file_name);
+	scene->animation = valid_file(file_name);
 	lines = ft_read_lignes(file_name);
 	if (lines == 0)
 		error("the file does not exist");

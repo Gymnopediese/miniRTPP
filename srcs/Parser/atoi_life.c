@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:47:37 by albaud            #+#    #+#             */
-/*   Updated: 2022/12/16 14:53:32 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:40:30 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_atoir(const char *str, int min, int max)
 	return (num * neg);
 }
 
+// while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+// 	;
 double	ft_atodor(const char *str, double min, double max)
 {
 	double		neg;
@@ -48,24 +50,18 @@ double	ft_atodor(const char *str, double min, double max)
 	int			count;
 
 	i = 0;
-	neg = 1;
 	num = 0;
 	count = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		;
+	neg = 1;
 	if (str[i] == '-' || str[i] == '+')
-	{
 		if (str[i++] == '-')
 			neg *= -1;
-	}
 	while (str[i] >= 48 && str[i] <= 57)
 		num = num * 10 + (str[i++] - 48);
 	if (str[i++] != '.')
 		return (num * neg);
 	while (str[i] >= 48 && str[i] <= 57 && ++count)
 		num = num * 10 + (str[i++] - 48);
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-		;
 	num = num / ft_pow(10, count) * neg;
 	if (max != min && (num < min || num > max))
 		error("atodo range error, please check your .rt file");

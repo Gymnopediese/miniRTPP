@@ -6,11 +6,12 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 23:26:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 22:18:43 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:35:55 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
 void	trans(double matr[4][4], double m1[4][4], int r);
 
 // This function is to find the determinant value of matrix . . .
@@ -24,6 +25,32 @@ typedef struct s_iter
 	int	y;
 }	t_iter;
 
+void	determin_loop(double mt[4][4],
+	double matrix[4][4], t_iter *i, double k)
+{
+	i->x = 0;
+	i->y = 0;
+	i->b = -1;
+	while (++i->b < k)
+	{
+		i->c = -1;
+		while (++i->c < k)
+		{
+			mt[i->b][i->c] = 0;
+			if (i->b != 0 && i->c != i->a)
+			{
+				mt[i->x][i->y] = matrix[i->b][i->c];
+				if (i->y < k - 2)
+					i->y++;
+				else
+				{
+					i->y = 0;
+					i->x++;
+				}
+			}
+		}
+	}
+}
 
 double	determin(double matrix[4][4], int k)
 {
@@ -34,39 +61,43 @@ double	determin(double matrix[4][4], int k)
 
 	deter = 0.0;
 	z = 1.0;
-
 	if (k == 1)
 		return (matrix[0][0]);
 	deter = 0;
 	i.a = -1;
 	while (++i.a < k)
 	{
-		i.x = 0;
-		i.y = 0;
-		i.b = -1;
-		while (++i.b < k)
-		{
-			i.c = -1;
-			while (++i.c < k)
-			{
-				mt[i.b][i.c] = 0;
-				if (i.b != 0 && i.c != i.a)
-				{
-					mt[i.x][i.y] = matrix[i.b][i.c];
-					if (i.y < k - 2)
-						i.y++;
-					else
-					{
-						i.y = 0;
-						i.x++;
-					}
-				}
-			}
-		}
+		determin_loop(mt, matrix, &i, k);
 		deter = deter + z * (matrix[0][i.a] * determin(mt, k - 1));
 		z = -1 * z;
 	}
 	return (deter);
+}
+
+void	m_inverse_loop(double matr[4][4],
+	double comatr[4][4], t_iter *i, double f)
+{
+	i->x = 0;
+	i->y = 0;
+	i->a = -1;
+	while (++i->a < f)
+	{
+		i->b = -1;
+		while (++i->b < f)
+		{
+			if (i->a != i->c && i->b != i->d)
+			{
+				matr[i->x][i->y] = comatr[i->a][i->b];
+				if (i->y < f - 2)
+					i->y++;
+				else
+				{
+					i->y = 0;
+					i->x++;
+				}
+			}
+		}
+	}
 }
 
 // This function is to find cofactors of matrix . . .
@@ -82,27 +113,7 @@ void	m_inverse(double comatr[4][4], int f)
 		i.d = -1;
 		while (++i.d < f)
 		{
-			i.x = 0;
-			i.y = 0;
-			i.a = -1;
-			while (++i.a < f)
-			{
-				i.b = -1;
-				while (++i.b < f)
-				{
-					if (i.a != i.c && i.b != i.d)
-					{
-						matr[i.x][i.y] = comatr[i.a][i.b];
-						if (i.y < f - 2)
-							i.y++;
-						else
-						{
-							i.y = 0;
-							i.x++;
-						}
-					}
-				}
-			}
+			m_inverse_loop(matr, comatr, &i, f);
 			cofact[i.c][i.d] = pow(-1, i.c + i.d) * determin(matr, f - 1);
 		}
 	}

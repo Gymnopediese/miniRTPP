@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:22:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/10 21:29:53 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 08:38:44 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,12 @@
 int	ray_trace_basic(t_scene *scene, t_ray *r)
 {
 	t_hit		hit;
-	t_v3		col;
 
 	hit.obj = 0;
 	if (hit_obj(scene, r, &hit))
 	{
-		col = v_nmult(&hit.obj->color, 255);
-		r->origin = hit.ray.origin;
-		r->direction = v_rm(&r->origin, &scene->light->pos);
-		v_normalize(&r->origin);
-		v_normalize(&r->direction);
-		col = v_nmult(&col, fabs(v_dotp(&r->origin, &r->direction) / 3)
-				* scene->light->ratio + 1 - scene->light->ratio);
-		if (v_dotp(&r->origin, &r->direction) < 0)
-			col = v_nmult(&col, 0);
-		return (v_tocol(&col));
+		v_cnmult(&hit.color, 255);
+		return (v_tocol(&hit.color));
 	}
 	return (-1);
 }

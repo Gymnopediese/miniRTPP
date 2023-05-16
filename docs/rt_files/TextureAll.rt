@@ -1,0 +1,21 @@
+
+
+
+
+
+sp  5,0,10   1 0,0,0                       -s 1,1,1 -t docs/textures/glace.xpm
+cy  -5,0,10  0.2,-0.2,0 1.0 2 255,0,0              -t docs/textures/glace.xpm
+cn  -0,5,10  0.2,-0.2,0 1.0 2 255,0,0              -t docs/textures/glace.xpm
+hb  -0,-5,10 0.2,-0.2,0 1.0 2 255,0,0              -t docs/textures/glace.xpm
+hb2 -5,-5,10 0.2,-0.2,0.2 0.4 2 255,0,0            -t docs/textures/glace.xpm
+cb   5,-5,10 0.2,-0.2,0.2       255,0,0            -t docs/textures/glace.xpm
+pb  5,5,10 0.2,-0.2,0.2 1.0 2 255,0,0              -t docs/textures/glace.xpm
+pb2  10,5,10 0.2,-0.2,0.2 1.0 2 255,0,0            -t docs/textures/glace.xpm
+to  0,0,10   0.2,0,0          255,0,0              -t docs/textures/glace.xpm
+cp  -5,5,10  0.2,-0.2,0 1.0 1 255,0,0              -t docs/textures/glace.xpm
+
+sp 0,0,0   1 1,1,0 -s 100,100,100 -t docs/textures/space.xpm
+
+A 0.2 255,255,255
+C 0,0,0 0,0,0 70
+L 0,0,0 1 255,0,0

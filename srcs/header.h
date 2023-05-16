@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/11 11:57:01 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 01:26:11 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void		brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
 				const t_hit *hit, const t_scene *scene);
 
 void		print_vector(t_v3 a, char *name);
-int			damier(t_obj *obj, t_v3 *hit, t_scene *scene);
-int			uvmapping(t_obj *obj, t_v3 *hit, t_scene *scene);
+// int			damier(t_obj *obj, t_v3 *hit, t_scene *scene);
+// int			uvmapping(t_obj *obj, t_v3 *hit, t_scene *scene);
 // Dispersion
 t_v3		disperse(t_hit *hit, t_obj *obj);
 int			coloring2(t_obj	*obj, t_v3 *hit, t_scene *scene);
@@ -57,4 +57,12 @@ void		brightness(t_v3 *tmp_color, const t_v3 *origine_pos,
 				const t_hit *hit, const t_scene *scene);
 
 void		apply_matrices(t_list *o, t_scene *scene);
+
+long int	ft_get_color(const t_canvas *cvs, int x, int y);
+
+void		*get_mlx(void *p);
+t_obj_file	*obj_parser(char *filename);
+void		init_intersects(t_scene *scene);
+void		init_scene(t_scene *scene);
+int			simple(t_scene *scene);
 #endif
