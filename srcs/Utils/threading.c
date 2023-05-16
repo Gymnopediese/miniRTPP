@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threading.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:08:11 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:02:36 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:13:14 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	do_my_part(t_process *process)
 			r.origin = process->scene->camera->pos;
 			r.direction = v_relative_pos(process->scene->w.cvs.x,
 					process->scene->w.cvs.y, iter.x, iter.y);
-			if (process->scene->camera_mode)
+			if (process->scene->camera_mode == 0)
 				color = ray_trace_phong(process->scene, &r);
 			else
 				color = ray_trace_basic(process->scene, &r);

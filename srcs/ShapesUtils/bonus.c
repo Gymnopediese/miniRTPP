@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 19:08:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:39:35 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:30:58 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	bumpmap(const t_obj *obj, t_v3 uv, t_hit *hit)
 	uv.x = (int)fabs(uv.x) % obj->bumpmap.x;
 	uv.y = (int)fabs(uv.y) % obj->bumpmap.y;
 	deformation = col_v(ft_get_color(&obj->bumpmap, (int)uv.x, (int)uv.y));
+	v_cunit(&hit->normal);
 	//print_vector(hit->normal, "avanst");
-	v_cunit(&hit->normal);
-	hit->normal.x += (deformation.x * 2 - 1) * PI;
-	hit->normal.y += (deformation.y * 2 - 1) * PI;
-	hit->normal.z += (deformation.z)         * PI;
-	v_cunit(&hit->normal);
+	hit->normal.x += (deformation.x * 2 - 1) / PI * 2;
+	hit->normal.y += (deformation.y * 2 - 1) / PI * 2;
+	hit->normal.z += (deformation.z) / PI * 2;
 	//print_vector(hit->normal, "apres");
 }
 

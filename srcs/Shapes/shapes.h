@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shapes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:17:29 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:30:00 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,55 +50,55 @@ void		global_to_local(const t_ray *r, t_ray *new, const t_obj *obj);
 
 // return true if ray intersect sphere
 void		sphere_function(t_ray *ray, double *sols);
-void		sphere_normal(t_hit *hit, int mode);
+void		sphere_normal(t_hit *hit, t_ray *normal, int mode);
 int			no_condition(const t_ray *local);
 t_v3		sphere_uv(t_v3 *hit, int mode);
 
-void		torus_normal(t_hit *hit, int mode);
+void		torus_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		torus_uv(t_v3 *hit, int mode);
 void		torus_function(t_ray *ray, double *sols);
 
 void		plan_function(const t_ray *ray, double *sols);
-void		plan_normal(t_hit *hit, int mode);
+void		plan_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		plan_uv(t_v3 *hit, int mode);
 
 void		cylindre_function(t_ray *ray, double *sols);
-void		cylindre_normal(t_hit *hit, int mode);
+void		cylindre_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		cylindre_uv(t_v3 *hit, int mode);
 int			cylindre_condition(const t_ray *local);
 
 void		capsule_function(t_ray *ray, double *sols);
-void		capsule_normal(t_hit *hit, int mode);
+void		capsule_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		capsule_uv(t_v3 *hit, int mode);
 int			capsule_condition(const t_ray *local);
 
 void		cone_function(t_ray *ray, double *sols);
-void		cone_normal(t_hit *hit, int mode);
+void		cone_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		cone_uv(t_v3 *hit, int mode);
 int			cone_condition(const t_ray *local);
 
 void		hyperboloid_function(t_ray *ray, double *sols);
-void		hyperboloid_normal(t_hit *hit, int mode);
+void		hyperboloid_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		hyperboloid_uv(t_v3 *hit, int mode);
 int			hyperboloid_condition(const t_ray *local);
 
 void		hyperboloid2_function(t_ray *ray, double *sols);
-void		hyperboloid2_normal(t_hit *hit, int mode);
+void		hyperboloid2_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		hyperboloid2_uv(t_v3 *hit, int mode);
 int			hyperboloid2_condition(const t_ray *local);
 
 void		paraboloid_function(t_ray *ray, double *sols);
-void		paraboloid_normal(t_hit *hit, int mode);
+void		paraboloid_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		paraboloid_uv(t_v3 *hit, int mode);
 int			paraboloid_condition(const t_ray *local);
 
 void		paraboloid2_function(t_ray *ray, double *sols);
-void		paraboloid2_normal(t_hit *hit, int mode);
+void		paraboloid2_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		paraboloid2_uv(t_v3 *hit, int mode);
 int			paraboloid2_condition(const t_ray *local);
 
 void		cube_function(const t_ray *ray, double *sols);
-void		cube_normal(t_hit *hit, int mode);
+void		cube_normal(t_hit *hit, t_ray *normal, int mode);
 t_v3		cube_uv(t_v3 *hit, int mode);
 int			cube_condition(const t_ray *local);
 

@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   plan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:41:01 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 18:18:31 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	plan_normal(t_hit *hit, int mode)
+void	plan_normal(t_hit *hit, t_ray *normal, int mode)
 {
 	(void) mode;
-	hit->normal = (t_v3){0, 0, -1};
+	(void) hit;
+	normal->direction = ((t_v3){0, 0, -1});
+	normal->origin = ((t_v3){0, 0, 0});
 }
 
 t_v3	plan_uv(t_v3 *hit, int mode)

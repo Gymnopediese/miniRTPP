@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:11:47 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:05:51 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:47:02 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	brightness(t_v3 *final_color, const t_hit *hit, const t_scene *scene)
 		v_cunit(&v1);
 		t_v3 v2 = v_unit(&hit->normal);
 		//double tmp = v_angle(&v1, &v2);
-		if (v_dotp(&v1, &v2) < 0) // TODO opti
+		if (v_dotp(&v1, &v2) <= 0) // TODO opti
 		{
 			current_link = current_link->next;
 			continue;

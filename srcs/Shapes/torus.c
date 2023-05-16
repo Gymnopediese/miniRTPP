@@ -6,20 +6,18 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:30:00 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 10:48:07 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 16:34:03 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shapes.h"
 
-void	torus_normal(t_hit *hit, int mode)
+void	torus_normal(t_hit *hit, t_ray *normal, int mode)
 {
-	t_v3	t;
-
 	(void) mode;
-	t = (t_v3){hit->ray.origin.x, 0, hit->ray.origin.z};
-	v_normalize(&t);
-	hit->normal = v_rm(&hit->ray.origin, &t);
+	normal->origin = (t_v3){hit->ray.origin.x, 0, hit->ray.origin.z};
+	v_normalize(&normal->origin);
+	normal->direction = hit->ray.origin;
 }
 
 t_v3	torus_uv(t_v3 *hit, int mode)

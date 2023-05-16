@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:51:41 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 14:10:36 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:25:58 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ t_v3	sphere_uv(t_v3 *hit, int mode)
 	return (uv);
 }
 
-void	sphere_normal(t_hit *hit, int mode)
+void	sphere_normal(t_hit *hit, t_ray *normal, int mode)
 {
 	(void)mode;
-	hit->normal = hit->ray.origin;
+	normal->direction = hit->ray.origin;
+	normal->origin = ((t_v3){0, 0, 0});
 }
 
 int	no_condition(const t_ray *local)

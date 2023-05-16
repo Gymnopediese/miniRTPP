@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:55:09 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:20:30 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:46:24 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ int	get_solution(const t_ray *local,
 	return (ind);
 }
 
+void	get_full_data(const t_obj *obj, t_hit *hit, int ind)
+{
+	t_ray	normal;
+
+	obj->funcs->normal(hit, &normal, ind);
+	local_to_global(&normal.origin, obj);
+	local_to_global(&normal.direction, obj);
+	hit->normal = v_rm(&normal.direction, &normal.origin);
+	get_color(obj, hit, ind);
+}
+
 int	get_point(const t_ray *ray, const t_obj *obj, t_hit *hit, int full)
 {
 	t_ray	local;
@@ -55,11 +66,7 @@ int	get_point(const t_ray *ray, const t_obj *obj, t_hit *hit, int full)
 	if (ind == -1)
 		return (0);
 	if (full)
-	{
-		obj->funcs->normal(hit, ind);
-		get_color(obj, hit, ind);
-		// local_to_global(&hit->normal, obj);
-	}
+		get_full_data(obj, hit, ind);
 	local_to_global(&hit->ray.origin, obj);
 	hit->obj = obj;
 	return (1);

@@ -3,10 +3,10 @@
 sp  1,0,5   1 255,255,255  -b docs/bump_maps/brick.xpm  -t docs/bump_maps/brickt.xpm
 
 sp  -1,0,5   1 0,0,0 -t docs/bump_maps/brickt.xpm
-pl  0,0,2    1,1,0 233,233,233 -b docs/bump_maps/brick.xpm -t docs/bump_maps/brickt.xpm -s 5,5,5
+pl  0,0,2    1,1,0 233,233,233 -t docs/bump_maps/brickt.xpm -s 5,5,5 -b docs/bump_maps/flaque.xpm 
 
-A 0.2 255,255,255
+A 0.2       255,255,255
 C 0,0,0 0,0,0 70
-L 0,0,0 1 255,255,255
+L 0,0,0 1     255,255,255
 L -1,0,3 1 255,255,255
-L 1,0,3 1 255,255,255
+# L 1,0,5 1 255,255,255

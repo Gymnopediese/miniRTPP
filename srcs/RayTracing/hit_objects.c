@@ -3,24 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   hit_objects.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:19:16 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:02:13 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:47:16 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	hit_any_obj(const t_scene *scene, t_ray *r, double	d)
+int	hit_any_obj(const t_scene *scene, t_ray *r, double d)
 {
 	t_list	*objects;
 	t_hit	hit;
- 
+
 	objects = scene->objects;
 	while (objects)
 	{
-		if (get_point(r, objects->data, &hit, 0) && v_dist(&r->origin, &hit.ray.origin) < d)
+		if (get_point(r, objects->data, &hit, 0)
+			&& v_dist(&r->origin, &hit.ray.origin) < d
+			&& v_dist(&r->origin, &hit.ray.origin) > 0)
 		{
 			return (1);
 		}

@@ -47,20 +47,25 @@ void	capsule_function(t_ray *ray, double *sols)
 	sols[1] = (-e.b - sqrt(e.delta)) / (2.0 * e.a);
 }
 
-void	capsule_normal(t_hit *hit, int mode)
+void	capsule_normal(t_hit *hit, t_ray *normal, int mode)
 {
-	if (mode == 2)
-		hit->normal = ((t_v3){
-				hit->ray.origin.x,
-				hit->ray.origin.y,
-				hit->ray.origin.z - 1});
-	else if (mode == 3)
-		hit->normal = ((t_v3){
-				hit->ray.origin.x,
-				hit->ray.origin.y,
-				hit->ray.origin.z + 1});
+	if (mode == 3)
+	{
+		normal->direction = (t_v3){hit->ray.origin.x,
+			hit->ray.origin.y, hit->ray.origin.z};
+		normal->origin = (t_v3){0, 0, 1};
+	}
+	else if (mode == 2)
+	{
+		normal->direction = (t_v3){hit->ray.origin.x,
+			hit->ray.origin.y, hit->ray.origin.z};
+		normal->origin = (t_v3){0, 0, -1};
+	}
 	else
-		hit->normal = ((t_v3){-hit->ray.origin.x, -hit->ray.origin.y, 0});
+	{
+		normal->direction = hit->ray.origin;
+		normal->origin = ((t_v3){0, 0, hit->ray.origin.z});
+	}
 }
 
 t_v3	capsule_uv(t_v3 *hit, int mode)

@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 09:00:35 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 16:43:44 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,23 @@ void	cylindre_function(t_ray *ray, double *sols)
 	sols[1] = (-e.b - sqrt(e.delta)) / (2.0 * e.a);
 }
 
-void	cylindre_normal(t_hit *hit, int mode)
+void	cylindre_normal(t_hit *hit, t_ray *normal, int mode)
 {
-	if (mode > 2)
-		hit->normal = ((t_v3){0, 0, 1});
+	if (mode == 3)
+	{
+		normal->direction = ((t_v3){0, 0, -1});
+		normal->origin = ((t_v3){0, 0, 0});
+	}
+	else if (mode == 2)
+	{
+		normal->direction = ((t_v3){0, 0, 1});
+		normal->origin = ((t_v3){0, 0, 0});
+	}
 	else
-		hit->normal = ((t_v3){-hit->ray.origin.x, -hit->ray.origin.y, 0});
+	{
+		normal->direction = hit->ray.origin;
+		normal->origin = ((t_v3){0, 0, hit->ray.origin.z});
+	}
 }
 
 t_v3	cylindre_uv(t_v3 *hit, int mode)
