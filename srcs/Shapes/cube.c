@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:28:38 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:49:07 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	cube_normal(t_hit *hit, int mode)
 {
 	if (mode == 0)
-		hit->normal = (t_v3){0, 0, 1};
-	if (mode == 1)
 		hit->normal = (t_v3){0, 0, -1};
+	if (mode == 1)
+		hit->normal = (t_v3){0, 0, 1};
 	if (mode == 2)
-		hit->normal = (t_v3){0, 1, 0};
-	if (mode == 3)
 		hit->normal = (t_v3){0, -1, 0};
+	if (mode == 3)
+		hit->normal = (t_v3){0, 1, 0};
 	if (mode == 4)
-		hit->normal = (t_v3){1, 0, 0};
-	if (mode == 5)
 		hit->normal = (t_v3){-1, 0, 0};
+	if (mode == 5)
+		hit->normal = (t_v3){1, 0, 0};
 }
 
 t_v3	cube_uv(t_v3 *hit, int mode)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 19:08:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:33:01 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:39:35 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,31 @@ t_v3	damier(const t_obj *obj, t_v3 *uv)
 	return (obj->color);
 }
 
-t_v3	texture(const t_obj *obj, t_v3 *uv)
+t_v3	texture(const t_obj *obj, t_v3 uv)
 {
-	uv->x *= obj->texture.x;
-	uv->y *= obj->texture.y;
-	uv->x = (int)fabs(uv->x) % obj->texture.x;
-	uv->y = (int)fabs(uv->y) % obj->texture.y;
-	return (col_v(ft_get_color(&obj->texture, (int)uv->x, (int)uv->y)));
+	uv.x *= obj->texture.x;
+	uv.y *= obj->texture.y;
+	uv.x = (int)fabs(uv.x) % obj->texture.x;
+	uv.y = (int)fabs(uv.y) % obj->texture.y;
+	return (col_v(ft_get_color(&obj->texture, (int)uv.x, (int)uv.y)));
 }
 
-void	bumpmap(const t_obj *obj, t_v3 *uv, t_hit *hit)
+void	bumpmap(const t_obj *obj, t_v3 uv, t_hit *hit)
 {
 	t_v3	deformation;
 
-	uv->x *= obj->texture.x;
-	uv->y *= obj->texture.y;
-	uv->x = (int)fabs(uv->x) % obj->texture.x;
-	uv->y = (int)fabs(uv->y) % obj->texture.y;
-	deformation = col_v(ft_get_color(&obj->texture, (int)uv->x, (int)uv->y));
-	hit->normal.x += deformation.x * 2 - 1;
-	hit->normal.y += deformation.y * 2 - 1;
-	hit->normal.z += deformation.z;
+	uv.x *= obj->bumpmap.x;
+	uv.y *= obj->bumpmap.y;
+	uv.x = (int)fabs(uv.x) % obj->bumpmap.x;
+	uv.y = (int)fabs(uv.y) % obj->bumpmap.y;
+	deformation = col_v(ft_get_color(&obj->bumpmap, (int)uv.x, (int)uv.y));
+	//print_vector(hit->normal, "avanst");
+	v_cunit(&hit->normal);
+	hit->normal.x += (deformation.x * 2 - 1) * PI;
+	hit->normal.y += (deformation.y * 2 - 1) * PI;
+	hit->normal.z += (deformation.z)         * PI;
+	v_cunit(&hit->normal);
+	//print_vector(hit->normal, "apres");
 }
 
 int	get_color(const t_obj *obj, t_hit *hit, int mode)
@@ -72,8 +76,8 @@ int	get_color(const t_obj *obj, t_hit *hit, int mode)
 	else if (obj->mode == DAMIER)
 		hit->color = damier(obj, &uv);
 	else
-		hit->color = texture(obj, &uv);
+		hit->color = texture(obj, uv);
 	if (obj->bmap)
-		bumpmap(obj, &uv, hit);
+		bumpmap(obj, uv, hit);
 	return (1);
 }

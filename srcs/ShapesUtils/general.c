@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 18:55:09 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:01:15 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:20:30 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ int	get_point(const t_ray *ray, const t_obj *obj, t_hit *hit, int full)
 	ind = get_solution(&local, obj, hit, sols);
 	if (ind == -1)
 		return (0);
-	if (full && get_color(obj, hit, ind))
+	if (full)
 	{
 		obj->funcs->normal(hit, ind);
+		get_color(obj, hit, ind);
 		// local_to_global(&hit->normal, obj);
 	}
 	local_to_global(&hit->ray.origin, obj);

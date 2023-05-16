@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:52:08 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 15:17:29 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,7 @@ void		m_inverse(double comatr[4][4], int f);
 void		local_to_global(t_v3 *r, const t_obj *obj);
 void		global_to_local(const t_ray *r, t_ray *new, const t_obj *obj);
 
-// Sphere
-
-t_v3		damier(const t_obj *obj, t_v3 *uv);
-t_v3		texture(const t_obj *obj, t_v3 *uv);
+// Spher
 
 // return true if ray intersect sphere
 void		sphere_function(t_ray *ray, double *sols);

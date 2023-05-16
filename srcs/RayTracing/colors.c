@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:11:47 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:03:20 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/16 16:05:51 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ void	brightness(t_v3 *final_color, const t_hit *hit, const t_scene *scene)
 		}
 		v_cnmult(&tmp_color, v_dotp(&v1, &v2));
 		v_cadd(final_color, &tmp_color);
-		t_v3 reflexion;
-		compute_reflexion(&reflexion, &current_light->pos, &v2);
-		//double ref_intensity = v_dotp(&reflexion, &hit->ray.origin);
-		//tmp_color = v_mult(current_light->color, );
+		// t_v3 reflexion;
+		// compute_reflexion(&reflexion, &current_light->pos, &v2);
+		// double ref_intensity = -v_dotp(&reflexion, &hit->ray.origin);
+		// tmp_color = v_nmult(&current_light->color, ref_intensity);
+		// v_cadd(final_color, &tmp_color);
 		current_link = current_link->next;
 	}
 }

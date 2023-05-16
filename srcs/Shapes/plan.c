@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plan.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:21:00 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/16 15:41:01 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	plan_normal(t_hit *hit, int mode)
 {
 	(void) mode;
-	hit->normal = (t_v3){0, 0, 1};
+	hit->normal = (t_v3){0, 0, -1};
 }
 
 t_v3	plan_uv(t_v3 *hit, int mode)
