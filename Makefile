@@ -6,18 +6,16 @@
 #    By: albaud <albaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 14:57:19 by albaud            #+#    #+#              #
-#    Updated: 2023/05/17 09:17:14 by albaud           ###   ########.fr        #
+#    Updated: 2023/05/17 13:49:07 by albaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= miniRT
-#MAIN 		= dammier.c shapes/transform.c shapes/rotation.c shapes/inverse.c utils/threading.c disperse.c main.c ray_tracing.c uvmapping.c background/gradient.c gui/gui.c parser/atoi_life.c parser/init_objs.c parser/init_shapes.c parser/init_shapes_2.c parser/parser.c parser/parser_utils.c shapes/cone.c shapes/cylindre.c shapes/hyperboloid.c shapes/hyperboloid2.c shapes/matrix.c shapes/paraboloid.c shapes/paraboloid2.c shapes/plan.c shapes/sphere.c utils/debug.c utils/errors.c utils/inputs.c utils/iterate_objects.c utils/v_utils.c
-MAIN		= $(wildcard srcs/*.c) $(wildcard srcs/*/*.c)  #TOREMOVEEEEEEEE
+MAIN		= srcs/main.c srcs/Background/gradient.c srcs/Bonus/disperse.c srcs/Bonus/obj_parser.c srcs/Parser/atoi_life.c srcs/Parser/bonus_parser.c srcs/Parser/init_objs.c srcs/Parser/init_shapes.c srcs/Parser/init_shapes_2.c srcs/Parser/parser.c srcs/Parser/parser_utils.c srcs/RayTracing/colors.c srcs/RayTracing/hit_objects.c srcs/RayTracing/ray_tracing.c srcs/Shapes/capsule.c srcs/Shapes/cone.c srcs/Shapes/cube.c srcs/Shapes/cylindre.c srcs/Shapes/hyperboloid.c srcs/Shapes/hyperboloid2.c srcs/Shapes/obj.c srcs/Shapes/paraboloid.c srcs/Shapes/paraboloid2.c srcs/Shapes/plan.c srcs/Shapes/sphere.c srcs/Shapes/torus.c srcs/ShapesUtils/bonus.c srcs/ShapesUtils/general.c srcs/ShapesUtils/poly_solver.c srcs/ShapesUtils/poly_solver2.c srcs/ShapesUtils/poly_solver3.c srcs/ShapesUtils/poly_solver4.c srcs/ShapesUtils/shapes_utils.c srcs/TransformationMatriciel/global_local_convertion.c srcs/TransformationMatriciel/inverse.c srcs/TransformationMatriciel/m_mult.c srcs/TransformationMatriciel/matrix.c srcs/TransformationMatriciel/rotation.c srcs/TransformationMatriciel/transform.c srcs/Utils/debug.c srcs/Utils/errors.c srcs/Utils/get_mlx.c srcs/Utils/init.c srcs/Utils/inputs.c srcs/Utils/iterate_objects.c srcs/Utils/v_utils.c
 OBJS		= $(patsubst srcs/%.c, objs/%.o, $(MAIN))
-#OBJS		= ${MAIN:.c=.o}
 LIB 		= libs/koflibc/libft.a libs/vector3d/vlib.a
 CC			= /usr/bin/gcc -g
-CFLAGS		= -Wall -Wextra -Werror# -fsanitize=thread
+CFLAGS		= -Wall -Wextra -Werror
 FRAMEWORK	= -framework OpenGL -framework AppKit
 LIBS		= -Llibs/minilibx_macos -lmlx -Llibs/koflibc -lft
 SANITIZE	= -fsanitize=address -static-libsan
@@ -38,7 +36,7 @@ $(NAME)	: ${OBJS}
 		${CC} ${CFLAGS} ${LIBS} ${FRAMEWORK} -o ${NAME} ${OBJS} ${LIB}
 
 c		:
-		find *.c */*.c | grep -v *vectors* | grep -v *minilibx_macos* | tr '\n' ' ' 
+		find srcs/*.c srcs/*/*.c | grep -v *vectors* | grep -v *minilibx_macos* | tr '\n' ' ' 
 
 recompile :
 	make re -C koflibc

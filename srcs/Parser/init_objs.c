@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:06:36 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:26:33 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:56:18 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_camera(char **argv, t_scene *scene)
 		error("Wrong arguments number for the camera");
 	scene->camera->pos = ft_atovedo(argv[1], 0, 0);
 	scene->camera->orientation = ft_atovedo(argv[2], -1, 1);
+	v_cnmult(&scene->camera->orientation, 3.14159265359);
 	scene->camera->fov = ft_atoir(argv[3], 0, 180);
 }
 

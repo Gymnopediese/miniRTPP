@@ -6,13 +6,12 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:43:32 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:11:06 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:07:33 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <pthread.h>
-
 #define ANIMATION MAXINT
 
 int	update_screen(t_scene *scene)
@@ -40,8 +39,14 @@ int	simple(t_scene *scene)
 		apply_matrices(scene->objects, scene);
 		update_screen(scene);
 	}
+	scene->motion = (t_v3){0, 0, 0};
 	if (inputs(scene))
+	{
+		ft_pitch(&scene->motion, scene->camera->orientation.x);
+		ft_yaw(&scene->motion, scene->camera->orientation.y);
+		v_cadd(&scene->camera->pos, &scene->motion);
 		update_screen(scene);
+	}
 	return (0);
 }
 
@@ -67,7 +72,7 @@ int	main(int argc, char **argv)
 		ft_putendl("invalid resolution -> resolution set to 1 by default");
 		scene.resolution = 1;
 	}
-	ft_mlx_init(&scene.w, 800, 800, "miniRT");
+	ft_mlx_init(&scene.w, X, Y, "miniRT");
 	init_intersects(&scene);
 	get_mlx(scene.w.mlx);
 	parse_rt_file(&scene, argv[1]);

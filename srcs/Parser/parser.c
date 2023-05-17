@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:21:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:15:07 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:02:26 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ void	ligne_to_obj(char *line, t_scene *scene)
 	argv = ft_split(line, ' ');
 	if (argv == 0)
 		error("split malloc error");
-	ft_putendl(line);
 	id = get_id(argv[0]);
-	ft_putnbrn(CAMERA);
 	if (id == AMBIANCE)
 		init_ambiance(argv, scene);
 	else if (id == LUMIERE)

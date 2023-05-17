@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:47:37 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 09:11:51 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:00:14 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_atoir(const char *str, int min, int max)
 
 int	atodor_error(double max, double min, double num, char str)
 {
-	printf("%f %f %f\n", min, max, num);
 	if (max != min && (num < min || num > max))
 		error("atodo range error, please check your .rt file");
 	if (str)

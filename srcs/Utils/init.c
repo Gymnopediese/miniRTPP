@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 01:08:12 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:17:19 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:05:48 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_scene(t_scene *scene)
 
 	i = 0;
 	scene->hook = &simple;
-	scene->w.cvs = ft_init_canvas(scene->w.mlx, 800, 800);
+	scene->w.cvs = ft_init_canvas(scene->w.mlx, X, Y);
 	scene->input_mode = -1;
 	gradient_background(&scene->w.cvs, &(t_v3){100, 228, 228},
 		&(t_v3){228, 119, 119});

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_v3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/15 11:59:02 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:45:23 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void		v_nprintn(const t_v3 *a, const char *name);
 void		v_rprintn(t_v3 a);
 //imprime a puis d'un retour a la ligne
 void		v_printn(const t_v3 *a);
-
 
 void		v_normalize(t_v3 *a);
 t_v3		v_relative_pos(double height, double width, double x, double y);

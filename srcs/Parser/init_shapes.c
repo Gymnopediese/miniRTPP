@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:06:36 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 09:22:54 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:02:22 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	init_plan(char **argv, t_obj *obj)
 
 void	init_cylindre(char **argv, t_obj *obj)
 {
-	ft_putnbrn(ft_strtablen(argv));
 	if (ft_strtablen(argv) < 6)
 		error("Wrong arguments number for a cylindrique object\
 : <pos> <orientation> <radius> <hauteur> <color>");

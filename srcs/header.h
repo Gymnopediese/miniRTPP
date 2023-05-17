@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:10:19 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:04:44 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include "Shapes/shapes.h"
 # include <pthread.h>
 # include <signal.h>
+# define X 200
+# define Y 200
 
 int			hit_any_obj(const t_scene *scene, t_ray *r, double d);
 int			inputs(t_scene *scene);
@@ -61,4 +63,6 @@ t_obj_file	*obj_parser(char *filename);
 void		init_intersects(t_scene *scene);
 void		init_scene(t_scene *scene);
 int			simple(t_scene *scene);
+void		ft_pitch(t_v3 *vector, float angle);
+void		ft_yaw(t_v3 *vector, float angle);
 #endif
