@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:47:37 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 01:40:30 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 09:11:51 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,23 @@ int	ft_atoir(const char *str, int min, int max)
 		num = num * 10 + (str[i++] - 48);
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
-	if (max != min && (i < min || i > max))
+	if (max != min && (num * neg < min || num * neg > max))
 		error("atoi range error, please check your .rt file");
 	if (str[i])
 		error("atoi char error, please check your .rt file");
 	return (num * neg);
 }
 
-// while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-// 	;
+int	atodor_error(double max, double min, double num, char str)
+{
+	printf("%f %f %f\n", min, max, num);
+	if (max != min && (num < min || num > max))
+		error("atodo range error, please check your .rt file");
+	if (str)
+		error("atodo char error, please check your .rt file");
+	return (1);
+}
+
 double	ft_atodor(const char *str, double min, double max)
 {
 	double		neg;
@@ -58,15 +66,12 @@ double	ft_atodor(const char *str, double min, double max)
 			neg *= -1;
 	while (str[i] >= 48 && str[i] <= 57)
 		num = num * 10 + (str[i++] - 48);
-	if (str[i++] != '.')
+	if (str[i++] != '.' && atodor_error(max, min, num * neg, str[i]))
 		return (num * neg);
 	while (str[i] >= 48 && str[i] <= 57 && ++count)
 		num = num * 10 + (str[i++] - 48);
 	num = num / ft_pow(10, count) * neg;
-	if (max != min && (num < min || num > max))
-		error("atodo range error, please check your .rt file");
-	if (str[i])
-		error("atodo char error, please check your .rt file");
+	atodor_error(max, min, num, str[i]);
 	return (num);
 }
 

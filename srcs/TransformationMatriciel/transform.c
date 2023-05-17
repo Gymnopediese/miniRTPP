@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 23:06:00 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 14:49:34 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 09:24:21 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	m_transform(t_obj *obj, t_scene *scene)
 	m_copy(obj->inverse_transform, obj->transform);
 	tx = determin(obj->inverse_transform, 4);
 	if (tx == 0)
-		error("fuck my life");
+		error("scale vector cannot have 0 in it");
 	else
 		m_inverse(obj->inverse_transform, 4);
 	m_print(obj->transform, "NOR");

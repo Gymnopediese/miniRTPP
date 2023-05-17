@@ -6,7 +6,7 @@
 #    By: albaud <albaud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 14:57:19 by albaud            #+#    #+#              #
-#    Updated: 2023/05/12 10:43:18 by albaud           ###   ########.fr        #
+#    Updated: 2023/05/17 09:17:14 by albaud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJS		= $(patsubst srcs/%.c, objs/%.o, $(MAIN))
 #OBJS		= ${MAIN:.c=.o}
 LIB 		= libs/koflibc/libft.a libs/vector3d/vlib.a
 CC			= /usr/bin/gcc -g
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror# -fsanitize=thread
 FRAMEWORK	= -framework OpenGL -framework AppKit
 LIBS		= -Llibs/minilibx_macos -lmlx -Llibs/koflibc -lft
 SANITIZE	= -fsanitize=address -static-libsan

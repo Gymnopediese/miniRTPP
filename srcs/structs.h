@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 14:51:35 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:34:05 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct s_scene
 	t_process		*processes;
 	int				process_count;
 	int				process_amount;
+	int				resolution;
 	pthread_mutex_t	lock;
 }	t_scene;
 

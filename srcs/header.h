@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 15:02:31 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:56:33 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <pthread.h>
 # include <signal.h>
 
-int			hit_any_obj(const t_scene *scene, t_ray *r, double	d);
+int			hit_any_obj(const t_scene *scene, t_ray *r, double d);
 int			inputs(t_scene *scene);
 void		*iterate_thread(void *p);
 void		init_threads(t_scene *scene, int amount);

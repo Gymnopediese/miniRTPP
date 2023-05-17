@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 01:24:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 09:24:59 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 09:26:36 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_canvas	ft_init_image(void *mlx, char *filename)
 	cvs.img = mlx_xpm_file_to_image(mlx, filename, &cvs.x, &cvs.y);
 	if (errno)
 	{
-		perror("miniRT");
+		perror("miniRT: image loading");
 		exit(1);
 	}
 	cvs.cvs = mlx_get_data_addr(cvs.img,

@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:43:32 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:11:09 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 09:33:03 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ int	update_screen(t_scene *scene)
 		&(t_v3){228, 119, 119});
 	i = -1;
 	scene->process_count = 0;
-	while (++i < scene->process_amount)
-		pthread_kill(scene->processes[i].thread, SIGUSR1);
-	while (scene->process_count < scene->process_amount)
-		usleep(1);
+	iterate_objects(scene);
 	ft_putimg(scene->w, scene->w.cvs.img, (t_vector){0, 0, 0, 0});
 	return (0);
 }
@@ -48,9 +45,12 @@ int	simple(t_scene *scene)
 	return (0);
 }
 
-void	vo(int d)
+int	finish(t_scene *scene)
 {
-	(void)d;
+	(void) scene;
+	//free shit
+	exit(0);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -58,17 +58,24 @@ int	main(int argc, char **argv)
 	t_scene		scene;
 
 	ft_bzero(&scene, sizeof(t_scene));
-	if (argc != 2)
-		error("miniRT: usage: ./miniRT <file.rt>");
+	if (argc < 2 || argc > 3)
+		error("miniRT: usage: ./miniRT <file.rt> [resolution]");
+	scene.resolution = 1;
+	if (argc == 3)
+		scene.resolution = ft_atoi(argv[2]);
+	if (scene.resolution <= 0 || scene.resolution > 10)
+	{
+		ft_putendl("invalid resolution -> resolution set to 1 by default");
+		scene.resolution = 1;
+	}
 	ft_mlx_init(&scene.w, 800, 800, "miniRT");
 	init_intersects(&scene);
 	get_mlx(scene.w.mlx);
 	parse_rt_file(&scene, argv[1]);
 	init_scene(&scene);
-	signal(SIGUSR1, vo);
-	init_threads(&scene, 10);
 	mlx_hook(scene.w.win, 2, 0, keydown, scene.inputs);
 	mlx_hook(scene.w.win, 3, 0, keyup, scene.inputs);
+	mlx_hook(scene.w.win, 17, 0, finish, &scene);
 	mlx_loop_hook(scene.w.mlx, simple, &scene);
 	mlx_loop(scene.w.mlx);
 }
