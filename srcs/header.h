@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 14:04:44 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 15:52:50 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "Shapes/shapes.h"
 # include <pthread.h>
 # include <signal.h>
-# define X 200
-# define Y 200
+# define X 800
+# define Y 800
 
 int			hit_any_obj(const t_scene *scene, t_ray *r, double d);
 int			inputs(t_scene *scene);
