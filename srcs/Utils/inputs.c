@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:58:30 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 09:30:31 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 10:58:59 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int	inputs(t_scene *scene)
 		scene->camera->pos.y += ADD;
 
 	if (scene->inputs[KEYCODE_F] && ++f)
-		scene->camera->orientaion.x -= ADDCAM;
+		scene->camera->orientation.y += ADDCAM;
 	if (scene->inputs[KEYCODE_G] && ++f)
-		scene->camera->orientaion.y -= ADDCAM;
+		scene->camera->orientation.x -= ADDCAM;
 	if (scene->inputs[KEYCODE_H] && ++f)
-		scene->camera->orientaion.x += ADDCAM;
+		scene->camera->orientation.y -= ADDCAM;
 	if (scene->inputs[KEYCODE_T] && ++f)
-		scene->camera->orientaion.y += ADDCAM;
+		scene->camera->orientation.x += ADDCAM;
 	return (f + inputs2(scene));
 }
 

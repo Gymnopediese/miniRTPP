@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:06:36 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 14:33:34 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 10:49:08 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_camera(char **argv, t_scene *scene)
 	if (ft_strtablen(argv) != ARGS_CAMERA)
 		error("Wrong arguments number for the camera");
 	scene->camera->pos = ft_atovedo(argv[1], 0, 0);
-	scene->camera->orientaion = ft_atovedo(argv[2], -1, 1);
+	scene->camera->orientation = ft_atovedo(argv[2], -1, 1);
 	scene->camera->fov = ft_atoir(argv[3], 0, 180);
 }
 

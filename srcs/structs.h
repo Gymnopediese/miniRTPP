@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 08:34:05 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 10:48:57 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_ambiance
 typedef struct s_camera
 {
 	double	fov;
-	t_v3	orientaion;
+	t_v3	orientation;
 	t_v3	pos;
 }	t_camera;
 
@@ -125,6 +125,7 @@ typedef struct s_obj
 	int			scale_index;
 	int			mode;
 	int			bmap;
+	int			alpha;
 	t_v3		color2;
 	t_v3		damier;
 	t_canvas	texture;

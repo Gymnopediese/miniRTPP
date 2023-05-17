@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 15:52:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:53:45 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 10:49:18 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_camera(t_camera *a)
 {
 	ft_putendl("printing camera");
 	print_vector(a->pos, "position:\t");
-	print_vector(a->orientaion, "orientation:\t");
+	print_vector(a->orientation, "orientation:\t");
 	printf("fov:\t\t%f\n", a->fov);
 }
 
