@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:22:13 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:16:03 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:26:39 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ int	ray_trace_phong(t_scene *scene, t_ray *r)
 	if (hit_obj(scene, r, &hit))
 	{
 		col = (t_v3){0, 0, 0};
+		v_cunit(&hit.normal);
 		brightness(&col, &hit, scene);
 		ambiance_color = v_mult(&scene->ambiance->color, &hit.color);
 		v_cadd(&col, &ambiance_color);
 		v_cnmult(&col, 255);
-		int tmp = v_tocol(&col);
-		if (tmp != 0) // TODO pour test, enlever
-			return (tmp);
-		else
-			return tmp;
+		return (v_tocol(&col));
 	}
 	return (-1);
 }

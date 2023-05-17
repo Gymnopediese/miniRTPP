@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 17:58:30 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 13:14:23 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:26:13 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ int	inputs(t_scene *scene)
 	if (scene->inputs[KEYCODE_DOWN_ARROW] && ++f)
 		scene->camera->pos.z -= ADD;
 	if (scene->inputs[KEYCODE_F] && ++f)
-		scene->camera->orientaion.x -= ADDCAM;
+		scene->camera->orientation.y += ADDCAM;
 	if (scene->inputs[KEYCODE_G] && ++f)
-		scene->camera->orientaion.y -= ADDCAM;
+		scene->camera->orientation.x -= ADDCAM;
 	if (scene->inputs[KEYCODE_H] && ++f)
-		scene->camera->orientaion.x += ADDCAM;
+		scene->camera->orientation.y -= ADDCAM;
 	if (scene->inputs[KEYCODE_T] && ++f)
-		scene->camera->orientaion.y += ADDCAM;
+		scene->camera->orientation.x += ADDCAM;
 	return (f + inputs2(scene));
 }
 

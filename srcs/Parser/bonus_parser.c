@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:37:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 12:58:52 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:26:28 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void	bonus_parser(char	**argv, t_obj *obj, int start)
 			obj->scale = ft_atovedo(argv[start], 0, 0);
 		else if (ft_strcmp(argv[start], "-o") == 0 && argv[++start])
 			obj->orientation = ft_atovedo(argv[start], 0, 1);
+		else if (ft_strcmp(argv[start], "-a") == 0 && argv[++start])
+			obj->alpha = ft_atodor(argv[start], 1, MAXINT);
 		else if (ft_strcmp(argv[start], "-p") == 0 && argv[++start])
 			obj->pos = ft_atovedo(argv[start], 0, 1);
 		else if (ft_strcmp(argv[start], "-r") == 0 && argv[++start])
