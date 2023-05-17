@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 16:30:00 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:34:03 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:05:32 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	torus_normal(t_hit *hit, t_ray *normal, int mode)
 t_v3	torus_uv(t_v3 *hit, int mode)
 {
 	(void) mode;
-	return ((t_v3){atan(hit->z / hit->x), hit->y, 0});
+	return ((t_v3){atan(hit->z / hit->x) / PI * 2, hit->y, 0});
 }
 
 void	torus_function(t_ray *local, double *sols)

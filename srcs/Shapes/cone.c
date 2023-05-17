@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:50:28 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:04:34 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,10 @@ void	cone_normal(t_hit *hit, t_ray *normal, int mode)
 	}
 	else
 	{
-		normal->direction = ((t_v3){hit->ray.origin.x, hit->ray.origin.y, hit->ray.origin.z});
+		normal->direction = ((t_v3){hit->ray.origin.x,
+				hit->ray.origin.y, hit->ray.origin.z});
 		normal->origin = ((t_v3){0, 0, hit->ray.origin.z});
 	}
-}
-
-t_v3	cone_uv(t_v3 *hit, int mode)
-{
-	if (mode > 1)
-		return (*hit);
-	return ((t_v3){atan(hit->y / hit->x), hit->z, 0});
 }
 
 int	cone_condition(const t_ray *local)

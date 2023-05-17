@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 19:08:40 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 12:22:54 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:05:40 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ t_v3	col_v(long col)
 
 t_v3	damier(const t_obj *obj, t_v3 uv)
 {
-	if (obj->id != SPHERE)
-	{
-		uv.x = fabs(uv.x) / PI * 2;
-		uv.y = fabs(uv.y) / PI * 2;
-	}
 	uv.x *= obj->damier.x;
 	uv.y *= obj->damier.y;
 	if ((int)round(uv.x) % 2

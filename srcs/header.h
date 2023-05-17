@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 08:56:33 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:10:19 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void		error(char *message);
 void		input(int key, t_scene *scene);
 // void		iterate_objects(t_scene *scene);
 t_v3		v_relative_pos(double height, double width, double x, double y);
-void		brightness(t_v3 *final_color, const t_hit *hit, const t_scene *scene);
+void		brightness(t_v3 *final_color,
+				const t_hit *hit, const t_scene *scene);
 
 void		print_vector(t_v3 a, char *name);
 // int			damier(t_obj *obj, t_v3 *hit, t_scene *scene);

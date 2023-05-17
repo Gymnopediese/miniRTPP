@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 10:18:31 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 12:59:00 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ t_v3		ft_atovedo(char *str, double min, double max);
 t_v3		ft_atovei(char *str, int min, int max);
 double		ft_atodor(const char *str, double min, double max);
 int			ft_atoir(const char *str, int min, int max);
-
+int			comment(char *str);
 void		bonus_parser(char	**argv, t_obj *obj, int start);
 #endif

@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:43:32 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 09:33:03 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:11:06 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ int	simple(t_scene *scene)
 int	finish(t_scene *scene)
 {
 	(void) scene;
-	//free shit
-	exit(0);
+	ft_garbage_colector(0, 1, 1);
 	return (0);
 }
 

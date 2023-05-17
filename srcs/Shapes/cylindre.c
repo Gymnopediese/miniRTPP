@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 12:50:34 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 11:52:24 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:04:43 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_v3	cylindre_uv(t_v3 *hit, int mode)
 {
 	if (mode > 1)
 		return (*hit);
-	return ((t_v3){atan(hit->y / hit->x), hit->z, 0});
+	return ((t_v3){atan(hit->y / hit->x) / PI * 2, hit->z, 0});
 }
 
 int	cylindre_condition(const t_ray *local)

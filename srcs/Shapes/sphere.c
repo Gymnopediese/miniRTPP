@@ -6,16 +6,17 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 19:51:41 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:25:58 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:12:36 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shapes.h"\
+#include "shapes.h"
 
 void	sphere_function(t_ray *ray, double *sols)
 {
 	t_v3		oc;
 	t_eqt2		eq;
+	double		r;
 
 	oc = ray->origin;
 	eq.a = v_dotp(&ray->direction, &ray->direction);
@@ -24,8 +25,9 @@ void	sphere_function(t_ray *ray, double *sols)
 	find_delta(&eq);
 	if (eq.delta < 0)
 		return ;
-	sols[0] = (-eq.b + sqrt(eq.delta)) / (2.0 * eq.a); // TODO stocker la racine et le diviseur pour opti
-	sols[1] = (-eq.b - sqrt(eq.delta)) / (2.0 * eq.a);
+	r = sqrt(eq.delta);
+	sols[0] = (-eq.b + r) / (2.0 * eq.a);
+	sols[1] = (-eq.b - r) / (2.0 * eq.a);
 }
 
 t_v3	sphere_uv(t_v3 *hit, int mode)

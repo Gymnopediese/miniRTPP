@@ -65,13 +65,6 @@ void	hyperboloid2_function(t_ray *ray, double *sols)
 // 	hit->normal = ((t_v3){-hit->ray.origin.x, -hit->ray.origin.y, 0});
 // }
 
-t_v3	hyperboloid2_uv(t_v3 *hit, int mode)
-{
-	if (mode > 1)
-		return (*hit);
-	return ((t_v3){atan(hit->y / hit->x), hit->z, 0});
-}
-
 int	hyperboloid2_condition(const t_ray *local)
 {
 	return (fabs(local->origin.z) < 2.01);

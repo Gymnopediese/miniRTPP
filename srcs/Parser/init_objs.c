@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_objs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
+/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:06:36 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 14:33:34 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:14:48 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void	init_camera(char **argv, t_scene *scene)
 
 void	init_light(char **argv, t_scene *scene)
 {
-	t_light *new_light;
+	t_light	*new_light;
 
-	
 	new_light = allok(sizeof(*new_light), 1, 1);
 	ft_lstadd_front(&scene->lights, ft_lstnew(new_light));
 	if (ft_strtablen(argv) != ARGS_LIGHT)

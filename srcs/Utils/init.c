@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 01:08:12 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 10:12:33 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:17:19 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	init_intersects(t_scene *scene)
 	scene->obj_funcs[TORUS - SHAPE_START] = (t_funcs){
 		torus_function, torus_normal, no_condition, torus_uv,};
 	scene->obj_funcs[CONE - SHAPE_START] = (t_funcs){
-		cone_function, cone_normal, cone_condition, cone_uv,};
+		cone_function, cone_normal, cone_condition, cylindre_uv,};
 	scene->obj_funcs[HYPERBOILD - SHAPE_START] = (t_funcs){hyperboloid_function,
-		cylindre_normal, hyperboloid_condition, hyperboloid_uv,};
+		cylindre_normal, hyperboloid_condition, cylindre_uv,};
 	scene->obj_funcs[HYPERBOILD2 - SHAPE_START] = (t_funcs){
 		hyperboloid2_function, cylindre_normal, hyperboloid2_condition,
-		hyperboloid2_uv,};
+		cylindre_uv,};
 	scene->obj_funcs[PARABOLOID2 - SHAPE_START] = (t_funcs){
 		paraboloid2_function,
-		cylindre_normal, paraboloid2_condition, paraboloid2_uv,};
+		cylindre_normal, paraboloid2_condition, cylindre_uv,};
 	scene->obj_funcs[PARABOLOID - SHAPE_START] = (t_funcs){paraboloid_function,
-		cylindre_normal, paraboloid_condition, paraboloid_uv,};
+		cylindre_normal, paraboloid_condition, cylindre_uv,};
 	scene->obj_funcs[CUBE - SHAPE_START] = (t_funcs){
 		cube_function, cube_normal, no_condition, cube_uv,};
 	scene->obj_funcs[CAPSULE - SHAPE_START] = (t_funcs){
@@ -54,7 +54,6 @@ void	init_scene(t_scene *scene)
 	i = -1;
 	while (++i < 128)
 		scene->inputs[i] = 0;
-	print_scene(scene);
 	iterate_objects(scene);
 	ft_putimg(scene->w, scene->w.cvs.img, (t_vector){0, 0, 0, 0});
 }

@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:37:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 11:15:41 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 12:58:52 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ int	more_options(char	**argv, t_obj *obj, int *start)
 	}
 	else
 		return (0);
+	return (1);
+}
+
+int	comment(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i] && str[i] != '#')
+		;
+	str[i] = 0;
 	return (1);
 }
 

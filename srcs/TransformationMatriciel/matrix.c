@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 01:56:53 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 01:24:12 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:15:31 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ void	m_copy(double dest[SIZE][SIZE], double src[SIZE][SIZE])
 	}
 }
 
-void	m_print(double t[SIZE][SIZE], char *name)
-{
-	printf("printing matrix %s\n ", name);
-	for (int i = 0; i < SIZE; i++)
-	{
-		for (int j = 0; j < SIZE; j++)
-		{
-			printf("%f ", t[i][j]);
-		}
-		printf("\n");
-	}
-}
+// void	m_print(double t[SIZE][SIZE], char *name)
+// {
+// 	printf("printing matrix %s\n ", name);
+// 	for (int i = 0; i < SIZE; i++)
+// 	{
+// 		for (int j = 0; j < SIZE; j++)
+// 		{
+// 			printf("%f ", t[i][j]);
+// 		}
+// 		printf("\n");
+// 	}
+// }

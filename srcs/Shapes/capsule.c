@@ -83,7 +83,7 @@ t_v3	capsule_uv(t_v3 *hit, int mode)
 		uv.x -= (int)uv.x;
 		return (uv);
 	}
-	return ((t_v3){atan(hit->y / hit->x), hit->z, 0});
+	return ((t_v3){atan(hit->y / hit->x) / PI * 2, hit->z, 0});
 }
 
 int	capsule_condition(const t_ray *local)

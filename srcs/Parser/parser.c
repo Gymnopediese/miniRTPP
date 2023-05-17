@@ -6,12 +6,11 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:21:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 08:40:14 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:15:07 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-
 
 enum e_id	get_id(char *line)
 {
@@ -21,6 +20,8 @@ enum e_id	get_id(char *line)
 	};
 	int			i;
 
+	if (!line)
+		return (-1);
 	i = -1;
 	while (p[++i])
 		if (ft_strcmp(line, (char *)p[i]) == 0)
@@ -29,7 +30,7 @@ enum e_id	get_id(char *line)
 	return (0);
 }
 
-void	ligne_to_shape(char **argv, t_scene *scene, enum e_id id)
+t_obj	*new_obj(int id)
 {
 	t_obj	*obj;
 
@@ -40,6 +41,14 @@ void	ligne_to_shape(char **argv, t_scene *scene, enum e_id id)
 	obj->scale_anim = (t_v3){0, 0, 0};
 	obj->scale_period = 5;
 	obj->id = id;
+	return (obj);
+}
+
+void	ligne_to_shape(char **argv, t_scene *scene, enum e_id id)
+{
+	t_obj	*obj;
+
+	obj = new_obj(id);
 	if (id == SPHERE)
 		init_sphere(argv, obj);
 	else if (id == PLAN || id == CUBE)
@@ -64,7 +73,7 @@ void	ligne_to_obj(char *line, t_scene *scene)
 	enum e_id	id;
 	char		**argv;
 
-	argv = ft_split(line, ' ');// USER WHITESPACE SPLIT
+	argv = ft_split(line, ' ');
 	if (argv == 0)
 		error("split malloc error");
 	ft_putendl(line);
@@ -76,20 +85,9 @@ void	ligne_to_obj(char *line, t_scene *scene)
 		init_light(argv, scene);
 	else if (id == CAMERA)
 		init_camera(argv, scene);
-	else
+	else if (id > 0)
 		ligne_to_shape(argv, scene, id);
 	ft_free_pp((void **)argv);
-}
-
-int	comment(char *str)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i] && str[i] != '#')
-		;
-	str[i] = 0;
-	return (1);
 }
 
 void	parse_rt_file(t_scene *scene, char *file_name)

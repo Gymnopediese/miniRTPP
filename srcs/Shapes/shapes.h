@@ -6,7 +6,7 @@
 /*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/16 16:30:00 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:09:09 by albaud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,27 +74,22 @@ int			capsule_condition(const t_ray *local);
 
 void		cone_function(t_ray *ray, double *sols);
 void		cone_normal(t_hit *hit, t_ray *normal, int mode);
-t_v3		cone_uv(t_v3 *hit, int mode);
 int			cone_condition(const t_ray *local);
 
 void		hyperboloid_function(t_ray *ray, double *sols);
 void		hyperboloid_normal(t_hit *hit, t_ray *normal, int mode);
-t_v3		hyperboloid_uv(t_v3 *hit, int mode);
 int			hyperboloid_condition(const t_ray *local);
 
 void		hyperboloid2_function(t_ray *ray, double *sols);
 void		hyperboloid2_normal(t_hit *hit, t_ray *normal, int mode);
-t_v3		hyperboloid2_uv(t_v3 *hit, int mode);
 int			hyperboloid2_condition(const t_ray *local);
 
 void		paraboloid_function(t_ray *ray, double *sols);
 void		paraboloid_normal(t_hit *hit, t_ray *normal, int mode);
-t_v3		paraboloid_uv(t_v3 *hit, int mode);
 int			paraboloid_condition(const t_ray *local);
 
 void		paraboloid2_function(t_ray *ray, double *sols);
 void		paraboloid2_normal(t_hit *hit, t_ray *normal, int mode);
-t_v3		paraboloid2_uv(t_v3 *hit, int mode);
 int			paraboloid2_condition(const t_ray *local);
 
 void		cube_function(const t_ray *ray, double *sols);
