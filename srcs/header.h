@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 08:56:33 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:32:00 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ t_obj_file	*obj_parser(char *filename);
 void		init_intersects(t_scene *scene);
 void		init_scene(t_scene *scene);
 int			simple(t_scene *scene);
+void		ft_pitch(t_v3 *vector, float angle);
+void		ft_yaw(t_v3 *vector, float angle);
 #endif

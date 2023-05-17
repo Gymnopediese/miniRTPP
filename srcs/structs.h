@@ -6,7 +6,7 @@
 /*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:42:18 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 10:48:57 by bphilago         ###   ########.fr       */
+/*   Updated: 2023/05/17 13:25:26 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct s_scene
 	int				process_count;
 	int				process_amount;
 	int				resolution;
+	t_v3			motion;
 	pthread_mutex_t	lock;
 }	t_scene;
 

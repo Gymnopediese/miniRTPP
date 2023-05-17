@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: albaud <albaud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bphilago <bphilago@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:43:32 by albaud            #+#    #+#             */
-/*   Updated: 2023/05/17 09:33:03 by albaud           ###   ########.fr       */
+/*   Updated: 2023/05/17 13:32:54 by bphilago         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,14 @@ int	simple(t_scene *scene)
 		apply_matrices(scene->objects, scene);
 		update_screen(scene);
 	}
+	scene->motion = (t_v3){0, 0, 0};
 	if (inputs(scene))
+	{
+		ft_pitch(&scene->motion, scene->camera->orientation.x);
+		ft_yaw(&scene->motion, scene->camera->orientation.y);
+		v_cadd(&scene->camera->pos, &scene->motion);
 		update_screen(scene);
+	}
 	return (0);
 }
 
